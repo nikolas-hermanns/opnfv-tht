@@ -1,0 +1,22 @@
+heat_template_version: ocata
+
+description: >
+  Gluon service configured with Puppet
+
+parameters:
+  MonitoringSubscriptionGluon:
+    default: 'overcloud-gluon'
+    type: string
+outputs:
+  role_data:
+    description: Role data for the Gluon role.
+    value:
+      service_name: gluon
+      monitoring_subscription: {get_param: MonitoringSubscriptionGluon}
+      config_settings:
+        tripleo.gluon.firewall_rules:
+          '142 gluon':
+            dport:
+              - 2705
+      step_config: |
+        include tripleo::profile::base::gluon

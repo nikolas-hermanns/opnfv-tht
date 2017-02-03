@@ -1,0 +1,2 @@
+resource_registry:
+  OS::TripleO::Services::Gluon: ../puppet/services/gluon.yaml
